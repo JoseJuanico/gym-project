@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        {% load static %}
+        <title>Entrenamientos</title>
+        <meta charset="uft-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="{% static 'core/css/bootstrap.min.css'%}" type="text/css" rel="Stylesheet">
+        <link href="{% static 'core/css/Styles.css'%}" type="text/css" rel="Stylesheet">
+
+    </head>
+    <body>
+        {% load static %}
+        <!--Barra de navecación-->
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <a href="{% url 'index'%}"><img src="{% static 'core/img/logo.jpg'%}" width="80px" height="80px" alt=""></a>
+            </a>
+            <div class="collapse navbar-collapse" id="opciones">   
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index'%}">Inicio</a>
+                    </li> 
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'quienSomos'%}">Quiénes somos</a> </li> <li class="nav-item">
+                        <a class="nav-link" href="{% url 'plan'%}">Suscripción</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'clases'%}">Entrenamientos</a>
+                    </li>            
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'crearUsuario'%}">Registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'horarioAtencion'%}">Horarios de apertura</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'basededatos'%}">Mostrar usuarios actuales</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <hr style="height:100px; border-width:1; color:gray; background-color: black; margin: auto;">
+        <!--Contener fluido, row, y efecto de texto con imagen-->
+        <div class="container-fluid">
+            <h1 class="titulos"><u>Clases Profesionales</u></h1>
+            <div class="row">
+                <div class="col-sm" >
+                    <div class="container">
+                        <img class="imgTraining" src="{% static 'core/img/boxeoEntreno.jpg'%}" width="100%" >
+                        <div class="middle">
+                            <p class="linkInvi">Deporte de contacto entre dos personas, que se golpean desde la cintura hacia arriba</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm" >
+                    <div class="container">
+                        <img class="imgTraining" src="{% static 'core/img/boxeoTraining.jpg'%}" width="100%" >
+                        <div class="middle">
+                            <p class="linkInvi">Horarios de Lunes a Viernes, de 19:00 a 21:00hrs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm" >
+                    <div class="container">
+                        <img  src="{% static 'core/img/boxeoTraining2.jpg'%}" width="100%" >
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-sm" >
+                    <div class="container">
+                        <img class="imgTraining" src="{% static 'core/img/yogatraining.jpg'%}" width="100%" >
+                        <div class="middle">
+                            <p class="linkInvi">Práctica que conecta el cuerpo, la respiración y la mente, utiliza posturas físicas, ejercicios de respiración y meditación para mejorar la salud general</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm" >
+                    <div class="container">
+                        <img class="imgTraining" src="{% static 'core/img/yogatraining2.jpg'%}" width="100%" >
+                        <div class="middle">
+                            <p class="linkInvi">Horarios de Lunes a Sábado, de 21:00 a 22:30hrs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm" >
+                    <div class="container">
+                        <img src="{% static 'core/img/yogaTraining3.jpg'%}" width="100%" >
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-sm" >
+                    <div class="container">
+                        <img class="imgTraining" src="{% static 'core/img/karateEntreno.jpg'%}" width="100%" >
+                        <div class="middle">
+                            <p class="linkInvi">Arte marcial japonés, en el que se permiten puñetazos, patadas, golpes de codo y rodilla, así como los golpes de mano abierta</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm" >
+                    <div class="container">
+                        <img class="imgTraining" src="{% static 'core/img/karateTraining1.jpg'%}" width="100%" >
+                        <div class="middle">
+                            <p class="linkInvi">Horarios de Lunes a Viernes, de 17:00 a 19:00hrs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm" >
+                    <div class="container">
+                        <img src="{% static 'core/img/karateTraining2.jpg'%}" width="100%" >
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-sm" >
+                    <div class="container">
+                        <img class="imgTraining" src="{% static 'core/img/zumbaEntreno.jpg'%}" width="100%" >
+                        <div class="middle">
+                            <p class ="linkInvi">Disciplina deportiva, que se imparte en clases dirigídas, en la que se realizan ejercicios aeróbicos al ritmo de música latina, con la finalidad de perder peso de forma divertida y mejorar el estado de ánimo de los deportistas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm" >
+                    <div class="container">
+                        <img class="imgTraining" src="{% static 'core/img/zumbaTraining2.jpg'%}" width="100%" >
+                        <div class="middle">
+                            <p class="linkInvi">Horarios de Lunes a Domingo, de 20:00 a 22:00hrs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm" >
+                    <div class="container">
+                        <img src="{% static 'core/img/zumbaTraining3.jpg'%}" width="100%" >
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--Pie de page-->
+        <hr style="height:100px; border-width:1; color:gray; background-color: black; margin: auto;">
+        <footer class="piePagina bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm" style="margin-top: 30px;padding: 0px;">
+                        <p class="pieTexto">ANONYMOUS GYM</p>
+                    </div>
+                    <div class="col-sm" style="margin-top: 30px;padding-left: 70px;">
+                        <a href="https://www.facebook.com/" ><img src="{% static 'core/img/Facebook_Rounded_Solid_icon-icons.com_61562.png'%}"></a>
+                        <a href="https://www.instagram.com/"><img src="{% static 'core/img/Instagram_Rounded_Solid_icon-icons.com_61560.png'%}"></a>
+                        <a href="https://www.twitter.com/"><img src="{% static 'core/img/Twitter_Rounded_Solid_icon-icons.com_61561.png'%}"></a>
+                    </div>
+                    <div class="col-sm">
+                        <p class="copyright" style="margin-top: 70px;">Jose Juanico,@Copyrigth Derechos reservados</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--Js, SQuery, Bootstrap, etc-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+    </body>
+</html>

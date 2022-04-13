@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registro</title>
+        <link href="{% static 'core/css/bootstrap.min.css'%}" type="text/css" rel="Stylesheet">
+        <link href="{% static 'core/css/Styles.css'%}" type="text/css" rel="Stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+        <style>
+            label {
+                padding: 5px;
+            }
+
+            #tituloInicioSesion {
+                text-align: center;
+                padding-bottom: 10px;
+                color: rgb(15, 96, 107);
+                text-shadow: 1px 1px 1px rgb(6, 44, 114);
+            }
+
+            #tituloInicioSesion:hover {
+                color: brown;
+            }
+
+            #tituloRegistrar {
+                text-align: center;
+                padding-bottom: 10px;
+                color: rgb(15, 96, 107);
+                text-shadow: 1px 1px 1px rgb(6, 44, 114);
+            }
+            #tituloRegistrar:hover {
+                color: brown;
+            }
+            label {
+                clear: both;
+                float: left;
+                width: 180px;
+            }
+            .error-control {
+                border: 1px solid red;
+            }
+            label.error {
+                color: rgb(131, 1, 1);
+                width: 200px;
+                font-size: 0.8em;
+                margin-top: -5px;
+                margin-bottom: 3px;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                $.extend(jQuery.validator.messages, {
+                    required: "This field is required.",
+                    email: "Ingresa un correo con formato user@data .",
+                    minlength: $.validator.format("Ingresa 6 caracteres como mínimo."),
+                });
+            });
+            $(function() {
+            $("#formulario").validate( {
+                rules: {
+                    rut: "required",
+                    nombre: "required",
+                    apellido: "required",
+                    correo: "required",
+                    contrasena: {
+                        required: true,
+                    },
+                    tipo: "required",
+                },
+                messages: {
+                    rut: "Ingrese su rut.",
+                    nombre: "Ingrese su nombre.",
+                    apellido: "Ingrese su apellido.",
+                    correo: {
+                        required: "Ingrese su correo electrónico.",
+                    },
+                    contrasena: {
+                        required: "Ingrese una contraseña.",
+                    },
+                    tipo: "Debe seleccionar un tipo.",
+                }
+            });
+        });
+        $(function(){
+            $("#formSesion").validate( {
+                rules: {
+                lcorreo: "required",
+                lpassword: "required"
+                },
+                messages: {
+                    lcorreo: {
+                        required: "Ingrese tu correo electrónico.",
+                        lcorreo: "Ingrese formato correcto.",
+                    },
+                    lpassword: {
+                        required: "Ingrese una contraseña.",
+                    }
+                }   
+            });
+        });
+        </script>
+    </head>
+    <body>
+        {% load static %}
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <a href="{% url 'index'%}"><img src="{% static 'core/img/logo.jpg'%}" width="80px" height="80px" alt=""></a>
+            </a>
+            
+            <div class="collapse navbar-collapse" id="opciones">   
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index'%}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'quienSomos'%}">Quiénes somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'plan'%}">Suscripción</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'clases'%}">Entrenamientos</a>
+                    </li>            
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'crearUsuario'%}">Registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'horarioAtencion'%}">Horarios de apertura</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'basededatos'%}">Mostrar usuarios actuales</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+        <hr style="height:70px; border-width:1; color:gray; background-color: black; margin: auto;" />
+        <hr style="height:70px; border-width:1; color:gray; background-color: black; margin: auto;" />
+        <div class="container">
+		    <div class="row">
+                <div class = "col-sm-3">
+
+                </div>
+                <div class = "col-sm-6">
+                     <div id = "tituloRegistrar">
+                        <h1>Modificar Usuario</h1>
+                     </div>
+                    <form id = "formulario" action = "#" role="form"  method="POST" style="background-color: rgb(109, 105, 105); border-radius: 5px; border: solid 1px #eee">
+                    {%csrf_token%} <!--comando que sirve en django para controlar integridad de datos ingresados, versus los que estan en la base de datos ya hecho, para que se almacene correctamente-->
+                    <div class = "form-group" style="margin-left: 100px; margin-right: 100px;">
+                        {{form.as_table}}
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class = "form-group" style = "text-align: center;">
+                        <input type="submit" class = "btn btn-danger" id="modificar" name="modificar" onclick="" value="Modificar" />
+                    </div>
+                </form>
+                </div>
+                <div class = "col-sm-3">
+
+                </div>
+                </div>
+        </div>
+        <hr style="height:100px; border-width:1; color:gray; background-color: black; margin: auto;">
+        <footer class="piePagina bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm" style="margin-top: 30px;padding: 0px;">
+                        <p class="pieTexto">ANONYMOUS GYM</p>
+                    </div>
+                    <div class="col-sm" style="margin-top: 30px;padding-left: 70px;">
+                        <a href="https://www.facebook.com/" ><img src="{% static 'core/img/Facebook_Rounded_Solid_icon-icons.com_61562.png'%}"></a>
+                        <a href="https://www.instagram.com/"><img src="{% static 'core/img/Instagram_Rounded_Solid_icon-icons.com_61560.png'%}"></a>
+                        <a href="https://www.twitter.com/"><img src="{% static 'core/img/Twitter_Rounded_Solid_icon-icons.com_61561.png'%}"></a>
+                    </div>
+                    <div class="col-sm">
+                        <p class="copyright" style="margin-top: 70px;">Jose Juanico,@Copyrigth Derechos reservados</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+         <!--Js, SQuery, Bootstrap, etc-->
+         
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+    </body>
+</html>
